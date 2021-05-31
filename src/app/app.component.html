@@ -1,0 +1,53 @@
+<!-- <router-outlet></router-outlet> -->
+<form [formGroup]="userprofileForm" (ngSubmit)="onSubmit()">        
+  <div class="form-group">
+      <label>FullName:</label>
+      <input type="text" #refName class="form-control" formControlName="firstName">
+        <!-- <div *ngIf="userprofileForm.controls['firstName'].hasError('required')" class="alert alert-danger"> --> -->
+                            <!-- atleast 5 didgits                            </div>!-->
+                            <div *ngIf="userprofileForm.controls['firstName'].hasError('maxLength()')" class="alert alert-danger">max lenght is 10char                           </div>
+           
+  </div>
+ 
+  <div class="form-group">
+      <label>lastName :</label>
+      <input type="text" class="form-control" formControlName="lastName">
+  </div>
+  <br>
+  <br>
+  <div class="form-group">
+    <label>age</label>
+    <input type="text" class="form-control" formControlName="age">
+</div>
+<br>
+<div class="form-group">
+  <label>email</label>
+  <input type="email" class="form-control" formControlName="email">
+</div>
+<br>
+<div  formGroupName="address">
+  <div class="form-group">
+          <label>Street</label>
+          <input type="text" class="form-control" formControlName="street">
+      </div>
+      <div class="form-group">
+          <label>city</label>
+          <input type="text" class="form-control" formControlName="city">
+      </div>
+      <div class="form-group">
+          <label>Postlcode</label>
+          <input type="text" class="form-control" formControlName="postalcode">
+          <div *ngIf="userprofileForm.controls['postalcode'].hasError('pattern')" class="alert alert-danger">
+                           <p> atleast 5 didgits</p>                            </div>
+                            
+
+      </div>
+
+</div>
+ 
+  
+ 
+  <button type="submit" [disabled]="!userprofileForm.valid" class="btn btn-danger">Submit</button>
+
+
+  </form>
